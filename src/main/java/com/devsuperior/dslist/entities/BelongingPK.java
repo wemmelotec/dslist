@@ -5,7 +5,7 @@ import java.util.Objects;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-
+//classe auxiliar para gerar um id utilizando as duas primarias das outras tabelas
 @Embeddable
 public class BelongingPK {
 

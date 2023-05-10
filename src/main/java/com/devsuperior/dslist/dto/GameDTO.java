@@ -3,7 +3,12 @@ package com.devsuperior.dslist.dto;
 import org.springframework.beans.BeanUtils;
 
 import com.devsuperior.dslist.entities.Game;
-
+/**
+ * Motivos para se ter uma GameDTO com os mesmos atributos da Game
+ * 1 - padronização - para a service nunca retornar entidade e sim dto para a controller
+ * 2 - evitar respresentação ciclica de objetos que acontecem em associações multuas
+ *
+ */
 public class GameDTO {
 
 	private Long id;
@@ -17,6 +22,8 @@ public class GameDTO {
 	private String longDescription;
 	
 	public GameDTO(Game entity) {
+		//utilizando a classe utilitária do próprio spring para fazer a cópia de atributo por atributo
+		//sem que que fazer manualmente um por um como foi feito na GameMinDTO
 		BeanUtils.copyProperties(entity, this);
 	}
 

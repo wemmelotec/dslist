@@ -28,9 +28,12 @@ public class GameService {
 	@Transactional(readOnly = true)
 	public List<GameMinDTO> findAll() {
 		List<Game> result = gameRepository.findAll();
+		//map(x -> new Object(x)).toList();
+		//transformar o objeto x de sua lista em um Object
 		return result.stream().map(GameMinDTO::new).toList();
 	}
 	
+	//esse é o serviço que utiliza a projeção vinda do banco
 	@Transactional(readOnly = true)
 	public List<GameMinDTO> findByGameList(Long listId) {
 		List<GameMinProjection> games = gameRepository.searchByList(listId);
